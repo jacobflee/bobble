@@ -10,9 +10,7 @@
 
             const data = {
                 'User-Agent': navigator.userAgent,
-                'Sec-Ch-Ua': clientHints.brands
-                    .map(brand => `"${brand.brand}";v="${brand.version}"`)
-                    .join(', '),
+                'Sec-Ch-Ua': clientHints.brands.map(brand => `"${brand.brand}";v="${brand.version}"`).join(', '),
                 'Sec-Ch-Ua-Mobile': clientHints.mobile ? '?1' : '?0',
                 'Sec-Ch-Ua-Platform': `"${clientHints.platform}"`
             };
@@ -22,6 +20,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                mode: 'cors',
                 body: JSON.stringify(data)
             })
         }
